@@ -29,15 +29,15 @@
         //    - Method Signature: bool AreNumbersEqual(int num1, int num2)
         //    - Returns true if the numbers are equal, false otherwise.
 
-        public static void AreNumbersEqual(int num1, int num2)
+        public static bool AreNumbersEqual(int num1, int num2)
         {
             if (num1 == num2)
             {
-                Console.WriteLine($"{num1} and  {num2} are equal");
+                return true;
             }
             else
             {
-                Console.WriteLine($"{num1} and  {num2} are not equal");
+                return false;
             }
         }
         
@@ -45,15 +45,15 @@
         //    - Method Signature: bool IsEven(int number)
         //    - Returns true if the number is even, false if odd.
 
-        public static void IsEvenOrOdd(int num)
+        public static bool IsEvenOrOdd(int num)
         {
             if (num % 2 == 0)
             {
-                Console.WriteLine($"{num} is even");
+                return true;
             }
             else
             {
-                Console.WriteLine($"{num} is odd");
+                return false;
             }
         }
         
@@ -61,15 +61,15 @@
         //    - Method Signature: bool IsPositive(int number)
         //    - Returns true if the number is positive, false if negative.
 
-        public static void IsPositive(int num)
+        public static bool IsPositive(int num)
         {
             if (num > 0)
             {
-                Console.WriteLine($"{num} is positive");
+                return true;
             }
             else
             {
-                Console.WriteLine($"{num} is negative");
+                return false;
             }
         }
         
@@ -78,15 +78,24 @@
         //    - Returns true if the candidate can vote, false otherwise.
         //    - Hint: Use `int.Parse()` or the safer `int.TryParse()` for extra practice in handling user input.
 
-        public static void CanVote(int age)
+        public static bool CanVote(int age)
         {
-            if (age >= 21)
+            Console.WriteLine("Please enter your age.");
+            var canParse = int.TryParse(Console.ReadLine(), out age);
+
+            while (canParse == false)
             {
-                Console.WriteLine($"Eligible to vote");
+                Console.WriteLine("Please enter a valid age.");
+                canParse = int.TryParse(Console.ReadLine(), out age);
+            }
+
+            if (age >= 18)
+            {
+                return true;
             }
             else
             {
-                Console.WriteLine($"Not Eligible to vote");
+                return false;
             }
         }
         
@@ -95,7 +104,7 @@
         //    - Method Signature: bool IsInRange(int number)
         //    - Returns true if the number is within the range, false otherwise.
 
-        public static void IsInRange()
+        public static bool IsInRange(int num)
         {
             Console.WriteLine("Please provide a number:");
             var canParse =  int.TryParse(Console.ReadLine(), out int userNum);
@@ -108,11 +117,11 @@
 
             if (userNum <= 10 && userNum >= -10)
             {
-                Console.WriteLine($"{userNum} is in range");
+                return true;
             }
             else
             {
-                Console.WriteLine($"{userNum} is out of range");
+                return false;
             }
         }
         
@@ -134,11 +143,11 @@
         {
           //PrintNumbers1000();
           //PrintEveryThirdNumber();
-          //AreNumbersEqual(876, 1000);
-          //IsEvenOrOdd(7);
-          //IsPositive(-5);
-          //CanVote(30);
-          //IsInRange();
+          //Console.WriteLine(AreNumbersEqual(15, 20));
+          //Console.WriteLine(IsEvenOrOdd(9));
+          //Console.WriteLine(IsPositive(10));
+          //Console.WriteLine(CanVote(20));
+          //Console.WriteLine(IsInRange(10));
           //DisplayMultiplicationTable(5);
         }
     }
