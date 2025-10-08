@@ -107,15 +107,15 @@
         public static bool IsInRange(int num)
         {
             Console.WriteLine("Please provide a number:");
-            var canParse =  int.TryParse(Console.ReadLine(), out int userNum);
+            var canParse =  int.TryParse(Console.ReadLine(), out num);
 
             while (!canParse)
             {
                 Console.WriteLine("Please provide a valid number:");
-                canParse = int.TryParse(Console.ReadLine(), out userNum);
+                canParse = int.TryParse(Console.ReadLine(), out num);
             }
 
-            if (userNum <= 10 && userNum >= -10)
+            if (num <= 10 && num >= -10)
             {
                 return true;
             }
